@@ -187,10 +187,11 @@ async def entrypoint(ctx: JobContext):
         vad=silero.VAD.load(),
         stt=deepgram.STT(),
         # you can also use OpenAI's TTS with openai.TTS()
-        tts=cartesia.TTS(),
-        llm=openai.LLM(model="gpt-4o"),
+        tts=openai.TTS(),
+        # tts=cartesia.TTS(),
+        # llm=openai.LLM(model="gpt-4o"),
         # you can also use a speech-to-speech model like OpenAI's Realtime API
-        # llm=openai.realtime.RealtimeModel()
+        llm=openai.realtime.RealtimeModel()
     )
 
     # start the session first before dialing, to ensure that when the user picks up

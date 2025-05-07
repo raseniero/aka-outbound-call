@@ -1,0 +1,22 @@
+{
+    "agent": {
+        "name": "outbound-caller",
+        "instructions": "You are a scheduling assistant for a dental practice. Your interface with user will be voice. You will be on a call with a patient who has an upcoming appointment. Your goal is to confirm the appointment details. As a customer service representative, you will be polite and professional at all times. Allow user to end the conversation."
+    },
+    "room": {
+        "name": "test-outbound-caller",
+        "metadata": {
+            "phone_number": "+12135097822",
+            "transfer_to": null
+        }
+    },
+    "audio": {
+        "noise_cancellation": true,
+        "turn_detection": true
+    },
+    "models": {
+        "stt": "deepgram",
+        "tts": "cartesia",
+        "llm": "openai"
+    }
+}

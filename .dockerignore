@@ -1,0 +1,111 @@
+# Python files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.pyd
+.Python
+
+# Virtual Environment
+venv/
+.env
+.env.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+.AppleDouble
+.LSOverride
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Build
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Logs
+*.log
+logs/
+
+# Test
+coverage.xml
+.tox/
+.coverage
+.coverage.*
+.coverage.*.xml
+.coverage.xml
+.nox/
+
+# Jupyter
+.ipynb_checkpoints
+
+# Local development
+.local
+*.local
+
+# Debug
+*.pyc
+__pycache__/
+.pytest_cache/
+
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Docker
+.dockerignore
+Dockerfile
+
+# Environment files
+.env.example
+
+# Configuration files
+playground-config.json
+
+# Sample files
+sip-participant.json
+
+# Task files
+taskfile.yaml
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.swp
+
+# Cache files
+.cache
+.cache/
+
+# IDE specific files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Editor backup files
+*~

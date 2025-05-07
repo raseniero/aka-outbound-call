@@ -31,6 +31,29 @@ tasks:
   dev:
     interactive: true
     cmds:
+
+  docker-build:
+    desc: "Build Docker image for the agent"
+    cmds:
+      - docker build -t outbound-caller .
+
+  docker-run:
+    desc: "Run Docker container"
+    cmds:
+      - docker run -d --name outbound-caller outbound-caller
+
+  docker-stop:
+    desc: "Stop and remove Docker container"
+    cmds:
+      - docker stop outbound-caller || true
+      - docker rm outbound-caller || true
+
+  docker-clean:
+    desc: "Clean up Docker images and containers"
+    cmds:
+      - docker stop outbound-caller || true
+      - docker rm outbound-caller || true
+      - docker rmi outbound-caller || true
       - platforms: [darwin, linux]
         cmd: "source venv/bin/activate"
       - platforms: [windows]

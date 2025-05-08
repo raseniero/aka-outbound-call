@@ -8,7 +8,7 @@ tasks:
     cmds:
       - echo -e "To setup and run the agent:\r\n"
       - echo -e "\tcd {{.ROOT_DIR}}\r"
-      - echo -e "\tpython3 -m venv venv\r"
+      - echo -e "\tpython3 -m venv .venv\r"
       - platforms: [darwin, linux]
         cmd: echo -e "\tsource venv/bin/activate\r"
       - platforms: [windows]
@@ -20,7 +20,7 @@ tasks:
   install:
     desc: "Bootstrap application for local development"
     cmds:
-      - "python3 -m venv venv"
+      - "python3 -m venv .venv"
       - platforms: [darwin, linux]
         cmd: "source venv/bin/activate"
       - platforms: [windows]
@@ -30,7 +30,15 @@ tasks:
 
   dev:
     interactive: true
+    desc: "Run the agent in development mode"
     cmds:
+      - platforms: [darwin, linux]
+        desc: "Activate virtual environment"
+        cmd: "source .venv/bin/activate"
+      - platforms: [windows]
+        desc: "Activate virtual environment"
+        cmd: "powershell .venv/Scripts/Activate.ps1"
+      - "python3 agent.py dev"
 
   docker-build:
     desc: "Build Docker image for the agent"
@@ -40,22 +48,17 @@ tasks:
   docker-run:
     desc: "Run Docker container"
     cmds:
-      - docker run -d --name outbound-caller outbound-caller
+      - docker run --name outbound-caller --rm -it --env-file .env -p 8081:8081 outbound-caller
 
   docker-stop:
     desc: "Stop and remove Docker container"
     cmds:
       - docker stop outbound-caller || true
-      - docker rm outbound-caller || true
 
   docker-clean:
     desc: "Clean up Docker images and containers"
     cmds:
-      - docker stop outbound-caller || true
-      - docker rm outbound-caller || true
       - docker rmi outbound-caller || true
-      - platforms: [darwin, linux]
-        cmd: "source venv/bin/activate"
-      - platforms: [windows]
-        cmd: "powershell venv/Scripts/Activate.ps1"
-      - "python3 agent.py dev"
+      - docker builder prune
+      - docker system prune -a
+      - docker buildx prune

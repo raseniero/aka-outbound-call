@@ -34,12 +34,12 @@ RUN chown -R appuser /home/appuser/.cache
 WORKDIR /home/appuser
 
 COPY requirements.txt .
-RUN python -m pip install -r requirements.txt
+RUN python3 -m pip install -r requirements.txt
 
 COPY . .
 
 # ensure that any dependent models are downloaded at build-time
-RUN python main.py download-files
+RUN python3 agent.py download-files
 
 # expose healthcheck port
 EXPOSE 8081

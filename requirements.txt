@@ -2,4 +2,4 @@ livekit
 livekit-agents[openai,deepgram,cartesia,silero,turn_detector]
 livekit-plugins-turn-detector
 livekit-plugins-noise-cancellation
-python-dotenv
+python-dotenv 
